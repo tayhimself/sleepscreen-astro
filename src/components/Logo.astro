@@ -1,0 +1,18 @@
+---
+import {Icon} from 'astro-icon';
+import {SITE} from '~/config.mjs'
+---
+
+<span class="self-center ml-2 text-2xl font-extrabold whitespace-nowrap ">
+  <Icon name="mgb" class="w-8 h-12 inline-block"/>
+	<span class="px-2 text-capitalize text-primary-content">
+    {SITE.name}
+  </span>
+</span>
+
+<style>
+  [astro-icon] {
+    vertical-align: middle;
+    fill: #009CA6
+    }
+</style>
