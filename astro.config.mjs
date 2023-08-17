@@ -3,7 +3,6 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import { SITE } from "./src/config.mjs";
-import netlify from "@astrojs/netlify/functions";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
