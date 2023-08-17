@@ -44,5 +44,20 @@ import Card from '../components/Card.astro';
 
 <script type="module">
 
+import {
+    initializeScreener
+  } from '../src/js/init.js';
+
+  let disordersToScreen = [
+    ['osa', true],
+    ['ais', true],
+    ['swd', true],
+    ['rls', true],
+    ['hypersomnia', true]
+  ];
+  document.querySelector('.btn-success').addEventListener('click', () => {
+    let screenStore = initializeScreener(disordersToScreen);
+    window.location.href = Object.entries(screenStore)[0][1].route;
+  });
 
 </script>

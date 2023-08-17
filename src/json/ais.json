@@ -1,0 +1,193 @@
+{
+  "id": "ais",
+  "title": "Insomnia",
+  "name": "Epworth Sleepiness Scale",
+  "description": "The Epworth Sleepiness Scale (ESS) is a 7-item questionnaire that measures the tendency to fall asleep during the day. The ESS is a validated and reliable instrument that has been used in a variety of clinical and research settings. The ESS is a self-report questionnaire that takes approximately 1 minute to complete. The ESS is scored by summing the responses to the 7 items. The ESS has been shown to be a valid and reliable measure of daytime sleepiness.",
+  "instructions": "Please answer the following questions by selecting the appropriate response.",
+  "questions": [
+    {
+      "id": "insomnia_lights_off",
+      "text": "Time it takes you to fall asleep after turning off the lights",
+      "type": "radio",
+      "options": [
+        {
+          "text": "No problem",
+          "value": 0
+        },
+        {
+          "text": "Slightly delayed",
+          "value": 1
+        },
+        {
+          "text": "Markedly delayed",
+          "value": 2
+        },
+        {
+          "text": "Very delayed or did not sleep at all",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_awakenings",
+      "text": "Awakenings after having fallen asleep",
+      "type": "radio",
+      "options": [
+        {
+          "text": "No problem",
+          "value": 0
+        },
+        {
+          "text": "Minor Problem",
+          "value": 1
+        },
+        {
+          "text": "Considerable problem",
+          "value": 2
+        },
+        {
+          "text": "Serious problem or did not sleep at all",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_awaken_early",
+      "text": "Final awakening earlier than desired",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Not earlier",
+          "value": 0
+        },
+        {
+          "text": "A little earlier",
+          "value": 1
+        },
+        {
+          "text": "Markedly earlier",
+          "value": 2
+        },
+        {
+          "text": "Much earlier or did not sleep at all",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_sleep_duration",
+      "text": "Total sleep duration",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Sufficient",
+          "value": 0
+        },
+        {
+          "text": "Slightly insufficient",
+          "value": 1
+        },
+        {
+          "text": "Markedly insufficient",
+          "value": 2
+        },
+        {
+          "text": "Very insufficient or did not sleep at all",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_sleep_quality",
+      "text": "Overall quality of sleep (no matter how long you slept)",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Satisfactory",
+          "value": 0
+        },
+        {
+          "text": "Slightly  unsatisfactory",
+          "value": 1
+        },
+        {
+          "text": "Markedly unsatisfactory",
+          "value": 2
+        },
+        {
+          "text": "Very unsatisfactory or did not sleep at all",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_awake_wellness",
+      "text": "Sense of well-being during the time you are awake",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Normal",
+          "value": 0
+        },
+        {
+          "text": "Slightly decreased",
+          "value": 1
+        },
+        {
+          "text": "Markedly decreased",
+          "value": 2
+        },
+        {
+          "text": "Very decreased",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_awake_function",
+      "text": "Functioning (physical and mental) during the time you are awake",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Normal",
+          "value": 0
+        },
+        {
+          "text": "Slightly  decreased",
+          "value": 1
+        },
+        {
+          "text": "Markedly decreased",
+          "value": 2
+        },
+        {
+          "text": "Very decreased",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "insomnia_awake_sleepiness",
+      "text": "Sleepiness during the time that you're awake",
+      "type": "radio",
+      "options": [
+        {
+          "text": "None",
+          "value": 0
+        },
+        {
+          "text": "Mild",
+          "value": 1
+        },
+        {
+          "text": "Considerable",
+          "value": 2
+        },
+        {
+          "text": "Intense",
+          "value": 3
+        }
+      ]
+    }
+  ]
+}

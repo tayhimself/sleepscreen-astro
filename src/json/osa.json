@@ -1,0 +1,304 @@
+{
+  "id": "osa",
+  "title": "Berlin Scale - Obstructive Sleep Apnea",
+  "description": "",
+  "instructions": "Please answer the following questions.",
+  "questions": [
+    {
+      "id": "diagnose_high_bp",
+      "text": "Have you been diagnosed with high blood pressure?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": "Y"
+        },
+        {
+          "text": "No",
+          "value": "N"
+        },
+        {
+          "text": "Don't know",
+          "value": "X"
+        }
+      ]
+    },
+    {
+      "id": "weight_lbs",
+      "text": "What is your weight in pounds?",
+      "type": "number",
+      "options": {
+        "placeholder": "Pounds",
+        "min": 50,
+        "max": 500
+      }
+    },
+    {
+      "height" : "height_ft",
+      "text": "What is your height?",
+      "type": "multiple",
+      "fields":
+      [
+        {
+          "id": "height_ft",
+          "text": "Feet",
+          "type": "number",
+          "options": {
+            "placeholder": "Feet",
+            "min": 3,
+            "max": 7,
+            "step": 1
+          }
+        },
+        {
+          "id": "height_in",
+          "text": "Inches",
+          "type": "number",
+          "options": {
+            "placeholder": "Inches",
+            "min": 0,
+            "max": 11,
+            "step": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "osa_snore",
+      "text": "Have you been told that you snore?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": "Y"
+        },
+        {
+          "text": "No",
+          "value": "N"
+        },
+        {
+          "text": "Don't know",
+          "value": "X"
+        }
+      ]
+    },
+    {
+      "id": "osa_snore_volume",
+      "text": "How loud is your snoring?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Slightly louder than breathing",
+          "value": 0
+        },
+        {
+          "text": "As loud as talking",
+          "value": 1
+        },
+        {
+          "text": "Louder than talking",
+          "value": 2
+        },
+        {
+          "text": "Very loud, can be heard in adjacent rooms",
+          "value": 3
+        }
+      ],
+      "depends": [
+        {
+          "question": "osa_snore",
+          "value": "Y"
+        }
+      ]
+    },
+    {
+      "id": "osa_snore_freq",
+      "text": "How often do you snore?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Nearly every day",
+          "value": 4
+        },
+        {
+          "text": "3-4 times a week",
+          "value": 3
+        },
+        {
+          "text": "1-2 times a week",
+          "value": 2
+        },
+        {
+          "text": "1-2 times a month",
+          "value": 1
+        },
+        {
+          "text": "Never or nearly never",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "question": "osa_snore",
+          "value": "Y"
+        }
+      ]
+    },
+    {
+      "id": "osa_snore_bother",
+      "text": "Has your snoring ever bothered other people?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": 1
+        },
+        {
+          "text": "No",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "question": "osa_snore",
+          "value": "Y"
+        }
+      ]
+    },
+    {
+      "id": "osa_breathe",
+      "text": "Has anyone told you that you quit breathing during your sleep?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Nearly every day",
+          "value": 4
+        },
+        {
+          "text": "3-4 times a week",
+          "value": 3
+        },
+        {
+          "text": "1-2 times a week",
+          "value": 2
+        },
+        {
+          "text": "1-2 times a month",
+          "value": 1
+        },
+        {
+          "text": "Never or nearly never",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "question": "osa_snore",
+          "value": "Y"
+        }
+      ]
+    },
+    {
+      "id": "osa_sleep_fatigue",
+      "text": "I feel tired or fatigued after sleep...",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Nearly every day",
+          "value": 4
+        },
+        {
+          "text": "3-4 times a week",
+          "value": 3
+        },
+        {
+          "text": "1-2 times a week",
+          "value": 2
+        },
+        {
+          "text": "1-2 times a month",
+          "value": 1
+        },
+        {
+          "text": "Never or nearly never",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "osa_wake_fatigue",
+      "text": "During my waking hours, I feel tired, fatigued or not up to par...",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Nearly every day",
+          "value": 4
+        },
+        {
+          "text": "3-4 times a week",
+          "value": 3
+        },
+        {
+          "text": "1-2 times a week",
+          "value": 2
+        },
+        {
+          "text": "1-2 times a month",
+          "value": 1
+        },
+        {
+          "text": "Never or nearly never",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "drowsy_nod_vehicle",
+      "text": "I have nodded off or fallen asleep while driving a vehicle...",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": 1
+        },
+        {
+          "text": "No",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "drowsy_nod_vehicle_freq",
+      "text": "How often does this occur?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Nearly every day",
+          "value": 4
+        },
+        {
+          "text": "3-4 times a week",
+          "value": 3
+        },
+        {
+          "text": "1-2 times a week",
+          "value": 2
+        },
+        {
+          "text": "1-2 times a month",
+          "value": 1
+        },
+        {
+          "text": "Never or nearly never",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "question": "drowsy_nod_vehicle",
+          "value": 1
+        }
+      ]
+    }
+  ]
+}

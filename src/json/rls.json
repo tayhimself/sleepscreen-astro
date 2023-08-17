@@ -1,0 +1,190 @@
+{
+  "id": "rls",
+  "title": "RLS",
+  "description": "Restless Legs Syndrome",
+  "instructions": "Please answer the following questions about your RLS symptoms.",
+  "questions": [
+    {
+      "id": "rls_uncomfortable",
+      "text": "Do you have or have you had recurrent <u>uncomfortable feelings or sensations</u> in your legs while you are sitting or lying down?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": 1
+        },
+        {
+          "text": "No",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "rls_urge_move",
+      "text": "Do you have or have you had a feeling of a recurrent <u>need or urge to move your legs</u> while you were sitting or lying down?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": 1
+        },
+        {
+          "text": "No",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "rls_start_resting",
+      "text": "Do you have or have you had <u>symptoms that start or get worse when you are resting</u>?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": "Y"
+        },
+        {
+          "text": "No",
+          "value": "N"
+        },
+        {
+          "text": "Don't Know",
+          "value": "X"
+        }
+      ],
+      "depends": [
+        {
+          "rule": "or",
+          "conditions": [
+            {
+              "question": "rls_uncomfortable",
+              "value": 1
+            },
+            {
+              "question": "rls_urge_move",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rls_move_better",
+      "text": "If you get up or move around when you have these feelings, do these feelings get any better while you actually keep moving?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Yes",
+          "value": "Y"
+        },
+        {
+          "text": "No",
+          "value": "N"
+        },
+        {
+          "text": "Don't Know",
+          "value": "X"
+        }
+      ],
+      "depends": [
+        {
+          "rule": "or",
+          "conditions": [
+            {
+              "question": "rls_uncomfortable",
+              "value": 1
+            },
+            {
+              "question": "rls_urge_move",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rls_frequency",
+      "text": "In the past 12 months, how often did you experience these feelings in your legs?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Every day",
+          "value": 5
+        },
+        {
+          "text": "4-6 days per week",
+          "value": 4
+        },
+        {
+          "text": "2-3 days per week",
+          "value": 3
+        },
+        {
+          "text": "1 day per week",
+          "value": 2
+        },
+        {
+          "text": "1 day per month or less",
+          "value": 1
+        },
+        {
+          "text": "Never ",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "rule": "or",
+          "conditions": [
+            {
+              "question": "rls_uncomfortable",
+              "value": 1
+            },
+            {
+              "question": "rls_urge_move",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rls_worse_night",
+      "text": "When you are working or living on a normal day schedule for at least two weeks, will these feelings be worse at night/evening than at other times of the day?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Worse in the evening or night",
+          "value": 3
+        },
+        {
+          "text": "Worse at other times",
+          "value": 2
+        },
+        {
+          "text": "No difference",
+          "value": 1
+        },
+        {
+          "text": "No recent 2 week period working or living on a normal day schedule",
+          "value": 0
+        }
+      ],
+      "depends": [
+        {
+          "rule": "or",
+          "conditions": [
+            {
+              "question": "rls_uncomfortable",
+              "value": 1
+            },
+            {
+              "question": "rls_urge_move",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

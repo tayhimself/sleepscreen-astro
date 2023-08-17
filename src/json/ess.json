@@ -1,0 +1,97 @@
+{
+  "id": "ess",
+  "title": "Sleep Disorder Screening",
+  "name": "Epworth Sleepiness Scale",
+  "description": "The Epworth Sleepiness Scale (ESS) is a 7-item questionnaire that measures the tendency to fall asleep during the day. The ESS is a validated and reliable instrument that has been used in a variety of clinical and research settings. The ESS is a self-report questionnaire that takes approximately 1 minute to complete. The ESS is scored by summing the responses to the 7 items. The ESS has been shown to be a valid and reliable measure of daytime sleepiness.",
+  "instructions": "Please answer the following questions by selecting the appropriate response.",
+  "questions": [
+    {
+      "id": "ess1",
+      "text": "Sitting and reading",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess2",
+      "text": "Watching TV",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess3",
+      "text": "Sitting inactive in a public place (e.g. a theater or a meeting)",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess4",
+      "text": "As a passenger in a car for an hour without a break",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess5",
+      "text": "Lying down to rest in the afternoon when circumstances permit",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess6",
+      "text": "Sitting and talking to someone",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess7",
+      "text": "Sitting quietly after a lunch without alcohol",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    },
+    {
+      "id": "ess8",
+      "text": "In a car, while stopped for a few minutes in traffic",
+      "type": "radio",
+      "options": [
+        "Never doze off",
+        "Occasionally doze off",
+        "Moderate chance of dozing",
+        "High chance of dozing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout>
+	<main>
+    <section class="py-4">
+      <h1 class="text-4xl font-bold text-center">Sleep Screen Results</h1>
+    </section>
+    <section class="max-w-2xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch min-h-screen">
+
+      <div class="hero min-h-[80%] bg-base-200">
+        <div class="hero-content flex-col leading-relaxed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.75 1a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5ZM1 4.75A.75.75 0 0 1 1.75 4H7a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 4.75Zm9 7.75a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5Zm0 1.5c.834 0 1.607-.255 2.248-.691l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 1 0 10 14ZM1.75 7a.75.75 0 0 0 0 1.5H4A.75.75 0 0 0 4 7H1.75Z" clip-rule="evenodd"/></svg>
+          <div>
+            <h1 class="text-3xl font-bold">Sleep Screen Results</h1>
+            <p class="my-2 low-risk text-xl">
+              Based on the answers you provided, there was not enough evidence to indicate that you are at high risk of having any of the sleep disorders screened for in the questionnaire.
+            </p>
+            <p class="my-2 unknown-risk text-xl">
+              Based on the answers that you provided, we were unable to determine your risk of common sleep because of missing information.
+            </p>
+            <p class="my-2 high-risk text-xl">Based on the answers you provided, you may be at high risk of having one or more of the following sleep disorders:
+            </p>
+            <div class="my-2 p-2 osa rounded-md mix-blend-darken bg-yellow-100">
+              <h3 class="text-xl font-bold">Obstructive Sleep Apnea</h3>
+              Obstructive Sleep Apnea is a sleep-related breathing disorder that causes your body to stop breathing during sleep. Sleep apnea may increase the risk of motor vehicle accidents and the long-term risk of high blood pressure, diabetes, and other diseases if left untreated. Fatigue due to sleep apnea may increase the risk of drowsy driving that may lead to an auto accident as you drive home from work.
+            </div>
+            <div class="my-2 p-2 insomnia rounded-md mix-blend-darken bg-yellow-100">
+              <h3 class="text-xl font-bold">Insomnia</h3>
+              Insomnia is a common sleep disorder with four common symptoms: difficulty falling asleep, difficulty staying asleep, waking up too early, and poor quality sleep. Someone with insomnia may feel tired and grumpy during the day, have trouble concentrating at work, and may fall asleep during the day. Stress or depression can cause a higher level of insomnia that may last for several weeks and may not go away on its own. Fatigue due to insomnia may increase the risk of drowsy driving that may lead to an auto accident as you drive home from work.
+            </div>
+            <div class="my-2 p-2 swd rounded-md mix-blend-darken bg-yellow-100">
+              <h3 class="text-xl font-bold">Shift Work Disorder</h3>
+              <h2 class="text-lg font-semibold">(Circadian Rhythm Sleep Disorder, Shift Work Type)</h2>
+              <p>
+                The major symptoms of Shift Work Disorder are excessive sleepiness and insomnia resulting from work shifts that conflict with your natural sleep cycle. Night, early morning, and rotating shifts require you to be awake when your body wants to sleep, and to sleep when your body wants to be awake. According to a National Sleep Foundation poll, 61% of shift workers experience insomnia and 30% suffer from excessive sleepiness. Other symptoms can include headaches, the inability to concentrate, and lack of energy and motivation. Fatigue due to SWD may increase both the risk of errors that result in incidents and injuries, and drowsy driving that may lead to an automobile crash.
+              </p>
+              <p class = "multiple my-2">
+                Your SWD symptoms may be better explained by another sleep disorder, medical or neurological disorder, poor sleep hygiene, or a mismatch between your inherent circadian rhythm and desired sleep-wake schedule. It is important to discuss your symptoms with your physician to determine the cause and best treatment options.
+              </p>
+            </div>
+            <div class="my-2 p-2 rls rounded-md mix-blend-darken bg-yellow-100">
+              <h3 class="text-xl font-bold">Restless Legs Syndrome</h3>
+              Restless Legs Syndrome (RLS) is when you have a strong urge to move your legs. The sensation might be like burning, prickling, itching or tingling. RLS can greatly disturb your sleep and/or hinder you at work and at home by making you very tired during the day. It can also play a part in causing depression or anxiety. Fatigue due to RLS may increase the risk of drowsy driving that may lead to an auto accident as you drive home from work.
+            </div>
+
+            <div class="my-2 p-2 hypersomnia rounded-md mix-blend-darken bg-yellow-100">
+              <h3 class="text-xl font-bold">Hypersomnia</h3>
+              <p>
+                Idiopathic Hypersomnia (IH) is a chronic neurological sleep disorder, causing excessive daytime sleepiness despite adequate, or more typically, long sleep amounts (more than 9-10 hours in a 24-hour period). People with IH often struggle to wake, despite setting multiple alarms, and have difficulty rising from bed (called sleep inertia). They may start the day feeling extremely groggy (sometimes referred to as sleep drunk), and can experience significantly reduced focus and concentration during waking hours (called brain fog).
+              </p>
+              <p>
+                People suffering from idiopathic hypersomnia often live without a correct diagnosis for a long time, blaming themselves and struggling to maintain work, studies and relationships.
+              </p>
+            </div>
+
+            <p class="my-2">
+              However, the screening calculation is not able to take into account information specific to you that your physician may know. If you are concerned for any reason about your sleep, a sleep disorder, or another health condition, you should see your physician regardless of your results.
+            </p>
+            <p class="my-2">
+              If you are concerned about your sleep, you may want to consider a sleep study. A sleep study is a test that records your body functions during sleep. It is used to diagnose sleep disorders such as sleep apnea, hypersomnia, and restless legs syndrome. A sleep study is usually done in a sleep center, but some sleep centers have portable equipment that can be used in your home.
+            </p>
+            <p class="my-2 high-risk">
+              We suggest that you share these screening results with your primary care physician or a specialist for evaluation. If you have questions this notification, please contact us via email at sleephealthstudy@partners.org.
+            </p>
+            <p class="my-2 high-risk mx-auto text-center">
+              <a class="btn btn-primary" href="http://www.sleepeducation.org/find-a-facility" target="_blank">Locate a sleep facility near you </a>
+            </p>
+            <p class="my-2 low-risk">
+              More information about sleep disorders can be found at the <a href="http://yoursleep.aasmnet.org/disorders.aspx" target="_blank" class="link link-primary">American Academy of Sleep Medicine.</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <hr />
+      <p class="my-2">
+        <strong>Important:</strong> This tool is not a substitute for a diagnosis from a healthcare professional. If you have any concerns about your sleep, talk with your healthcare provider.
+      </p>
+    </section>
+
+	</main>
+</Layout>
+
+<script type="module">
+
+
+</script>

@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout>
+  <main>
+    <section class="py-4">
+      <h1 class="text-4xl font-bold text-center">Anonymous Sleep Disorder Screening</h1>
+    </section>
+    <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
+      <div id="main" class="m-8">
+        <h3 class="my-8 font-semibold text-xl mx-auto text-center">Select the sleep disorders you wish to screen</h3>
+        <p class="my-2">
+          We suggest that you select all sleep disorders for screening. If you are not sure, leave the sleep disorders
+          selected as they will take less than a minute each on average.
+        </p>
+        <div class="mt-8 mb-4 flex flex-col place-content-center mx-auto">
+          <div class="flex flex-col place-content-center mx-auto">
+            <div class="form-control w-72">
+              <label class="cursor-pointer label">
+                <span class="label-text text-lg text-gray-600">Obstructive Sleep Apnea</span>
+                <input type="checkbox" class="toggle toggle-success" id="osa" checked />
+              </label>
+            </div>
+            <div class="form-control w-72">
+              <label class="cursor-pointer label">
+                <span class="label-text text-lg text-gray-600">Insomnia</span>
+                <input type="checkbox" class="toggle toggle-success" id="ais" checked />
+              </label>
+            </div>
+            <div class="form-control w-72">
+              <label class="cursor-pointer label">
+                <span class="label-text text-lg text-gray-600">Shift Work Disorder</span>
+                <input type="checkbox" class="toggle toggle-success" id="swd" checked />
+              </label>
+            </div>
+            <div class="form-control w-72">
+              <label class="cursor-pointer label">
+                <span class="label-text text-lg text-gray-600">Restless Legs Syndrome</span>
+                <input type="checkbox" class="toggle toggle-success" id="rls" checked />
+              </label>
+            </div>
+            <div class="form-control w-72">
+              <label class="cursor-pointer label">
+                <span class="label-text text-lg text-gray-600">Hypersomnia</span>
+                <input type="checkbox" class="toggle toggle-success" id="hypersomnia" checked />
+              </label>
+            </div>
+          </div>
+          <div class="flex place-content-center m-4 my-8 space-x-4">
+            <button class="btn btn-success" id="">Continue</button>
+          </div>
+
+          <hr />
+
+          <p class="my-2 font-light">
+            <strong>Important:</strong> This tool is not a substitute for a diagnosis from a healthcare professional. If
+            you have any concerns about your sleep, talk with your healthcare provider.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeScreener } from "../src/js/init.js"
+
+    document.querySelector(".btn-success").addEventListener("click", function () {
+      let disorders = {
+        osa: document.querySelector("#osa").checked,
+        ais: document.querySelector("#ais").checked,
+        swd: document.querySelector("#swd").checked,
+        rls: document.querySelector("#rls").checked,
+        hypersomnia: document.querySelector("#hypersomnia").checked,
+      }
+      let disordersToScreen = Object.entries(disorders).filter(([disorder, selected]) => {
+        if (selected) return true
+      })
+
+      let screenStore = initializeScreener(disordersToScreen)
+
+      sessionStorage.setItem("screenStore", JSON.stringify({ screenStore }))
+      // if none of the variables are true, then alert the user to select at least one
+      if (Object.keys(disorders).length === 0) {
+        alert("Please select at least one sleep disorder to screen.")
+      } else {
+        //forward to the page that matches the first selected sleep disorder
+        window.location.href = Object.entries(screenStore)[0][1].route
+      }
+    })
+  </script>
+</Layout>

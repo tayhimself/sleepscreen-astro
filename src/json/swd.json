@@ -1,0 +1,151 @@
+{
+  "id": "swd",
+  "title": "Shiftwork disorder",
+  "description": "",
+  "instructions": "Please answer the following questions.",
+  "questions": [
+    {
+      "id": "swd_schedule",
+      "text": "How is your work schedule structured?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Regular daylight hours",
+          "value": 1
+        },
+        {
+          "text": "Regular night hours",
+          "value": 2
+        },
+        {
+          "text": "Regular evening hours",
+          "value": 3
+        },
+        {
+          "text": "Irregular or rotating shifts",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "swd_awaken_early",
+      "text": "In the past month, <u>while working non-standard shifts</u>, did you have a problem with waking up too early and not being able to get back to sleep?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "No problem",
+          "value": 1
+        },
+        {
+          "text": "Minor problem",
+          "value": 2
+        },
+        {
+          "text": "Considerable problem",
+          "value": 3
+        },
+        {
+          "text": "Serious problem",
+          "value": 4
+        }
+      ],
+      "depends": [
+        {
+          "question": "swd_schedule",
+          "values": "[2,3,4]"
+        }
+      ]
+    },
+    {
+      "id": "swd_well_being",
+      "text": "In the past month, <u>while working non-standard shifts</u>, your sense of well-being during the time you were awake was :",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Normal",
+          "value": 1
+        },
+        {
+          "text": "Slightly decreased",
+          "value": 2
+        },
+        {
+          "text": "Somewhat decreased",
+          "value": 3
+        },
+        {
+          "text": "Very decreased",
+          "value": 4
+        }
+      ],
+      "depends": [
+        {
+          "question": "swd_schedule",
+          "values": "[2,3,4]"
+        }
+      ]
+    },
+    {
+      "id": "swd_doze_off",
+      "text": "In the past month, how likely were you to doze off at work <u>during your non-standard shift?</u>",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Not at all",
+          "value": 1
+        },
+        {
+          "text": "Slight chance",
+          "value": 2
+        },
+        {
+          "text": "Moderate chance",
+          "value": 3
+        },
+        {
+          "text": "Highly likely",
+          "value": 4
+        }
+      ],
+      "depends": [
+        {
+          "question": "swd_schedule",
+          "values": "[2,3,4]"
+        }
+      ]
+    },
+    {
+      "id": "swd_days_off",
+      "text": "How likely were you to doze off or fall asleep while driving <u>after at least two days off from work</u>?",
+      "type": "radio",
+      "options": [
+        {
+          "text": "Not at all",
+          "value": 1
+        },
+        {
+          "text": "Slight chance",
+          "value": 2
+        },
+        {
+          "text": "Moderate chance",
+          "value": 3
+        },
+        {
+          "text": "Highly likely",
+          "value": 4
+        },
+        {
+          "text": "Not applicable",
+          "value": 5
+        }
+      ],
+      "depends": [
+        {
+          "question": "swd_schedule",
+          "values": "[2,3,4]"
+        }
+      ]
+    }
+  ]
+}
