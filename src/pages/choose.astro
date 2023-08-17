@@ -10,7 +10,9 @@ import Notice from "../components/Notice.astro"
 
     <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
       <div id="main" class="m-8">
-        <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center">Select the sleep disorders you wish to screen</h3>
+        <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center">
+          Select the sleep disorders you wish to screen
+        </h3>
         <p class="my-2 text-lg">
           We suggest that you select all sleep disorders for screening. If you are not sure, leave the sleep disorders
           selected as they will take less than a minute each on average.
@@ -56,32 +58,32 @@ import Notice from "../components/Notice.astro"
       <Notice />
     </section>
   </main>
-
-  <script type="module">
-    import { initializeScreener } from "../src/js/init.js"
-
-    document.querySelector(".btn-success").addEventListener("click", function () {
-      let disorders = {
-        osa: document.querySelector("#osa").checked,
-        ais: document.querySelector("#ais").checked,
-        swd: document.querySelector("#swd").checked,
-        rls: document.querySelector("#rls").checked,
-        hypersomnia: document.querySelector("#hypersomnia").checked,
-      }
-      let disordersToScreen = Object.entries(disorders).filter(([disorder, selected]) => {
-        if (selected) return true
-      })
-
-      let screenStore = initializeScreener(disordersToScreen)
-
-      sessionStorage.setItem("screenStore", JSON.stringify({ screenStore }))
-      // if none of the variables are true, then alert the user to select at least one
-      if (Object.keys(disorders).length === 0) {
-        alert("Please select at least one sleep disorder to screen.")
-      } else {
-        //forward to the page that matches the first selected sleep disorder
-        window.location.href = Object.entries(screenStore)[0][1].route
-      }
-    })
-  </script>
 </Layout>
+
+<script>
+  import { initializeScreener } from "../js/init.js"
+
+  document.querySelector(".btn-success").addEventListener("click", function () {
+    let disorders = {
+      osa: document.querySelector("#osa").checked,
+      ais: document.querySelector("#ais").checked,
+      swd: document.querySelector("#swd").checked,
+      rls: document.querySelector("#rls").checked,
+      hypersomnia: document.querySelector("#hypersomnia").checked,
+    }
+    let disordersToScreen = Object.entries(disorders).filter(([disorder, selected]) => {
+      if (selected) return true
+    })
+
+    let screenStore = initializeScreener(disordersToScreen)
+
+    sessionStorage.setItem("screenStore", JSON.stringify({ screenStore }))
+    // if none of the variables are true, then alert the user to select at least one
+    if (Object.keys(disorders).length === 0) {
+      alert("Please select at least one sleep disorder to screen.")
+    } else {
+      //forward to the page that matches the first selected sleep disorder
+      window.location.href = Object.entries(screenStore)[0][1].route
+    }
+  })
+</script>

@@ -1,6 +1,9 @@
 import { listeners } from "./forms.js"
-let response = await fetch("../src/json/swd.json")
-let data = await response.json()
+let file = import.meta.glob("../json/swd.json")
+let data = {}
+for (const path in file) {
+  data = await file[path]()
+}
 let form = document.createElement("form")
 form.id="swd"
 document.getElementById("main").appendChild(form)

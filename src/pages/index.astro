@@ -1,29 +1,29 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro"
 import Title from "../components/Title.astro"
 import Notice from "../components/Notice.astro"
 ---
 
 <Layout>
-	<main class="">
-
+  <main class="">
     <Title title="Sleep Disorders Screening Tool" />
 
     <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
-
       <div id="main" class="m-8">
         <p class="my-2">
-          Use the Anonymous Sleep Disorders Screening Tool to discover your risk of common sleep disorders. You will be asked a series of questions about your sleep. The screening will take under 5 minutes to complete.
+          Use the Anonymous Sleep Disorders Screening Tool to discover your risk of common sleep disorders. You will be
+          asked a series of questions about your sleep. The screening will take under 5 minutes to complete.
         </p>
         <p class="my-2">
-          If there is a railroader in your life, encourage them to use the Anonymous Sleep Disorders Screening Tool. You may also want to take it yourself, to assess your own sleep. Your answers to this tool will generate an estimate of your risk of having one or more sleep disorders.
+          If there is a railroader in your life, encourage them to use the Anonymous Sleep Disorders Screening Tool. You
+          may also want to take it yourself, to assess your own sleep. Your answers to this tool will generate an
+          estimate of your risk of having one or more sleep disorders.
         </p>
         <ul class="my-2">
+          <li>The screening tool is anonymous and does not store any of your personal health information.</li>
           <li>
-            The screening tool is anonymous and does not store any of your personal health information.
-          </li>
-          <li>
-            When you exit the tool by going to another site or close your browser tab, any information you entered is automatically deleted.
+            When you exit the tool by going to another site or close your browser tab, any information you entered is
+            automatically deleted.
           </li>
         </ul>
         <div class="flex place-content-center my-8 space-x-4">
@@ -31,30 +31,30 @@ import Notice from "../components/Notice.astro"
         </div>
 
         <p class="my-2">
-          The screening is divided into five parts and will screen you for 5 different sleep disorders. <a href="./choose" class="link link-primary">Click here</a> if you want to choose specific sleep disorders to screen for, for example if you're curious about your risk for Sleep Apnea in particular.
+          The screening is divided into five parts and will screen you for 5 different sleep disorders. <a
+            href="./choose"
+            class="link link-primary">Click here</a
+          > if you want to choose specific sleep disorders to screen for, for example if you're curious about your risk for
+          Sleep Apnea in particular.
         </p>
       </div>
-      <Notice/>
+      <Notice />
     </section>
-	</main>
+  </main>
 </Layout>
 
-<script type="module">
-
-import {
-    initializeScreener
-  } from '../src/js/init.js';
+<script>
+  import { initializeScreener } from "../js/init.js"
 
   let disordersToScreen = [
-    ['osa', true],
-    ['ais', true],
-    ['swd', true],
-    ['rls', true],
-    ['hypersomnia', true]
-  ];
-  document.querySelector('.btn-success').addEventListener('click', () => {
-    let screenStore = initializeScreener(disordersToScreen);
-    window.location.href = Object.entries(screenStore)[0][1].route;
-  });
-
+    ["osa", true],
+    ["ais", true],
+    ["swd", true],
+    ["rls", true],
+    ["hypersomnia", true],
+  ]
+  document.querySelector(".btn-success").addEventListener("click", () => {
+    let screenStore = initializeScreener(disordersToScreen)
+    window.location.href = Object.entries(screenStore)[0][1].route
+  })
 </script>
