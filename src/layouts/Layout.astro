@@ -3,11 +3,11 @@ import { SITE } from "../config.mjs"
 import Navbar from "../components/Navbar.astro"
 import Footer from "../components/Footer.astro"
 
-const meta = {
+const defaultMeta = {
   title: SITE.title,
   description: SITE.description,
 }
-const { title } = Astro.props
+const { meta = defaultMeta } = Astro.props
 ---
 
 <!DOCTYPE html>

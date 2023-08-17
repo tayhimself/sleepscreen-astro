@@ -1,16 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro"
+import Notice from "../components/Notice.astro"
 ---
 
 <Layout>
   <main>
-    <section class="py-4">
-      <h1 class="text-4xl font-bold text-center">Anonymous Sleep Disorder Screening</h1>
-    </section>
+    <Title title="Anonymous Sleep Disorder Screening" />
+
     <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
       <div id="main" class="m-8">
-        <h3 class="my-8 font-semibold text-xl mx-auto text-center">Select the sleep disorders you wish to screen</h3>
-        <p class="my-2">
+        <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center">Select the sleep disorders you wish to screen</h3>
+        <p class="my-2 text-lg">
           We suggest that you select all sleep disorders for screening. If you are not sure, leave the sleep disorders
           selected as they will take less than a minute each on average.
         </p>
@@ -50,15 +51,9 @@ import Layout from "../layouts/Layout.astro"
           <div class="flex place-content-center m-4 my-8 space-x-4">
             <button class="btn btn-success" id="">Continue</button>
           </div>
-
-          <hr />
-
-          <p class="my-2 font-light">
-            <strong>Important:</strong> This tool is not a substitute for a diagnosis from a healthcare professional. If
-            you have any concerns about your sleep, talk with your healthcare provider.
-          </p>
         </div>
       </div>
+      <Notice />
     </section>
   </main>
 
