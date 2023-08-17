@@ -1,39 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro"
+import Spinner from "../components/Spinner.astro"
+import Submit from "../components/Submit.astro"
 ---
 
 <Layout>
   <main>
-    <section class="py-4">
-      <h1 class="text-3xl font-bold text-center"></h1>
-    </section>
+    <Title />
 
     <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
       <div id="main" class="m-8"></div>
 
-      <div class="hidden ease-in-out transition delay-200" id="spinner">
-        <div class="flex place-content-center">
-          <div
-            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status"
-          >
-            <span
-              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-              >Loading...</span
-            >
-          </div>
-        </div>
-      </div>
+      <Spinner />
 
-      <div class="pagination flex place-content-center m-4 space-x-4 transition ease-in-out delay-200">
-        <a class="btn hidden" id="prev">Previous</a>
-        <a class="btn" id="next">Continue</a>
-        <button class="btn btn-submit hidden" id="submit">Submit</button>
-      </div>
+      <Submit />
     </section>
   </main>
 </Layout>
-
 <script type="module" async src="../src/js/rls.js"></script>
 
 <script type="module"></script>

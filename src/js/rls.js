@@ -16,6 +16,8 @@ questions.forEach((question, i) => {
   // check if data.depends exists and if so, add it to the markup
   let markup = `
   <div class="question ${i > 0 ? `hidden` : ``}">
+  <progress class="progress progress-primary w-full -mt-4 mb-4" value=${i} max=${questions.length}></progress>
+
   <label class="text-semibold text-xl text-left min-w-full">${question.text}</label>
   `
   if (question.type === "number") {

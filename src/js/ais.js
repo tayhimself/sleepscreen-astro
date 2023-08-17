@@ -16,13 +16,12 @@ titleEls.forEach((el) => {
 questions.forEach((question, i) => {
   let markup = `
   <div class="question ${i > 0 ? `hidden` : ``}">
-  <!-- Eight point scale -->
-  <div class="alert shadow-lg italic hover:not-italic mt-8 mb-4 mx-auto">
+  <div class="alert shadow-lg italic hover:not-italic mx-auto">
   <p>
   This scale is intended to record your own assessment of any sleep difficulty you might have experienced. Please, check the items below to indicate your estimate of any difficulty, <b>provided that it occurred at least three times per week during the last month</b>.
   </p>
   </div>
-  <progress class="progress progress-primary w-full my-4" value=${i} max=${questions.length}></progress>
+  <progress class="progress progress-primary w-full my-8" value=${i} max=${questions.length}></progress>
   <label class="text-semibold text-xl text-left min-w-full">
   <p class="flex items-center">
     <span class="relative flex h-3 w-3 mr-1">

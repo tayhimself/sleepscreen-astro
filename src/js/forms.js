@@ -12,7 +12,7 @@ export const listeners = function (form, questions) {
   const isEmpty = (str) => !str.trim().length
   let currentStep = 0
 
-  // Add an event listener to the input elements that goes to the next page after 1.2 seconds when the user selects an answer
+  // Add an event listener to the input elements that goes to the next page after 1 second when the user selects an answer
 
   let inputs = document.querySelectorAll("input[type='radio']")
   inputs.forEach((input) => {
@@ -62,7 +62,6 @@ export const listeners = function (form, questions) {
   })
 
   function updateStatusDisplay(button = "") {
-    //console.log("currentStep: ", currentStep, "tabTargets.length: ", tabTargets.length)
     if (currentStep == 0) {
       // If it's the first step, hide the previous button
       nextButton.classList.remove("hidden")
@@ -122,7 +121,6 @@ export const listeners = function (form, questions) {
     let inputs = currentStep.querySelectorAll("input")
     // we need to check multiple inputs if there is a compound question, but so far the
     let inputname = inputs[0].name
-    console.log("inputname: ", inputname)
     let currentQ = questions.find((question) => question.id === inputname)
     let skip = false
     if (currentQ && currentQ.hasOwnProperty("depends")) {
@@ -140,7 +138,7 @@ export const listeners = function (form, questions) {
               // TODO This assumes a radio button or checkbox, but we need to handle text inputs as well
               if (answer && parseInt(answer.value) === condition.value) {
                 // we have a match, so we don't need to skip this question
-                console.log("answer: ", answer, "value:", answer.value, "condition: ", condition.value)
+                //console.log("answer: ", answer, "value:", answer.value, "condition: ", condition.value)
                 skip = false
               }
             })
@@ -215,7 +213,6 @@ export const listeners = function (form, questions) {
   }
 
   function showResults() {
-    console.log("showResults")
     // Hide the form
     form.classList.add("hidden")
     document.querySelector("div.pagination").classList.add("hidden")
@@ -226,7 +223,7 @@ export const listeners = function (form, questions) {
     if (next) {
       window.location.href = next;
     } else {
-      window.location.href = './results.html';
+      window.location.href = './results';
     }
     // send to api
     // sendFormDataToAPI(new FormData(form))
@@ -249,7 +246,7 @@ export const listeners = function (form, questions) {
         const data = await response.json()
         if (response.ok && response.status >= 200 && response.status < 300) {
           success = true
-          console.log("Success:", data)
+          //TODO - set the sessionStorage to console.log("Success:", data)
         } else {
           setTimeout(() => {
             console.log("retrying...")
