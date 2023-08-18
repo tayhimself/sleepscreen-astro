@@ -12,6 +12,48 @@ export const listeners = function (form, questions) {
   const isEmpty = (str) => !str.trim().length
   let currentStep = 0
 
+  // Validator with debounce function to check if the input is within the range of the min and max attributes
+  function debounce(func, wait) {
+    let timeout
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout)
+        func(...args)
+      }
+      clearTimeout(timeout)
+      timeout = setTimeout(later, wait)
+    }
+  }
+
+  // Add a validator to number elements to only allow numbers and check the range of the number
+  let numbers = document.querySelectorAll("input[type='number']")
+  numbers.forEach((number) => {
+    number.addEventListener(
+      "input",
+      debounce((e) => {
+        const min = parseInt(e.target.min, 10)
+        const max = parseInt(e.target.max, 10)
+        const value = parseInt(e.target.value, 10)
+
+        if (value < min || isNaN(value) || value > max) {
+          // disable the next, previous, or continue buttons
+          nextButton.setAttribute("disabled", "disabled")
+          previousButton.setAttribute("disabled", "disabled")
+          submitButton.setAttribute("disabled", "disabled")
+          // Make the input border red
+          e.target.classList.add('text-red-500', 'border-red-500'); // Add Tailwind CSS classes for error styling
+        } else {
+          // enable the next, previous, or continue buttons
+          nextButton.removeAttribute("disabled")
+          previousButton.removeAttribute("disabled")
+          submitButton.removeAttribute("disabled")
+          e.target.classList.remove('text-red-500', 'border-red-500'); // Add Tailwind CSS classes for error styling
+        }
+      }),
+      200
+    )
+  })
+
   // Add an event listener to the input elements that goes to the next page after 1 second when the user selects an answer
 
   let inputs = document.querySelectorAll("input[type='radio']")
@@ -182,13 +224,13 @@ export const listeners = function (form, questions) {
   }
 
   function saveFormDataToSessionStorage() {
-    let formData = new FormData(form);
-    const formDataObj = Object.fromEntries(formData.entries());
-    let screenStoreData = JSON.parse(sessionStorage.getItem('screenStore'));
+    let formData = new FormData(form)
+    const formDataObj = Object.fromEntries(formData.entries())
+    let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
     if (screenStoreData) {
-      screenStoreData.screenStore[form.id]['values'] = formDataObj;
-      screenStoreData.screenStore[form.id]['completed'] = true;
-      sessionStorage.setItem('screenStore', JSON.stringify(screenStoreData));
+      screenStoreData.screenStore[form.id]["values"] = formDataObj
+      screenStoreData.screenStore[form.id]["completed"] = true
+      sessionStorage.setItem("screenStore", JSON.stringify(screenStoreData))
     } else {
       // TODO make a restart function to redirect to the start of the form
     }
@@ -200,12 +242,12 @@ export const listeners = function (form, questions) {
    * NULL if there are no more screens to display
    */
   function getNextScreen() {
-    let screenStoreData = JSON.parse(sessionStorage.getItem('screenStore'));
+    let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
     if (screenStoreData) {
-      screenStoreData = screenStoreData.screenStore;
-      let nextScreen = Object.keys(screenStoreData).find(key => screenStoreData[key]['completed'] === false);
+      screenStoreData = screenStoreData.screenStore
+      let nextScreen = Object.keys(screenStoreData).find((key) => screenStoreData[key]["completed"] === false)
       if (nextScreen) {
-        return screenStoreData[nextScreen]['route'];
+        return screenStoreData[nextScreen]["route"]
       }
     } else {
       // TODO make a restart function to redirect to the start of the form
@@ -221,9 +263,9 @@ export const listeners = function (form, questions) {
     score = saveFormDataToSessionStorage()
     let next = getNextScreen()
     if (next) {
-      window.location.href = next;
+      window.location.href = next
     } else {
-      window.location.href = './results';
+      window.location.href = "./results"
     }
     // send to api
     // sendFormDataToAPI(new FormData(form))
@@ -236,7 +278,7 @@ export const listeners = function (form, questions) {
     let retry = 0
     while (!success && retry < 4) {
       try {
-        const response = await fetch("http://localhost:8000/"+form.id, {
+        const response = await fetch("http://localhost:8000/" + form.id, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -24,7 +24,7 @@ questions.forEach((question, i) => {
   `
   if (question.type === "number") {
     markup += `
-    <input class="w-1/2 p-5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" type="number" name="${question.id}" id="${question.id}" min="${question.options.min}" max="${question.options.max}" step="${question.options.step}">
+    <input class="w-1/2 p-5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" type="number" name="${question.id}" id="${question.id}" min="${question.options.min}" max="${question.options.max}" step="${question.options.step}" placeholder="${question.options?.placeholder|| ''}">
     `
   } else if (question.type === "radio") {
     markup += `
@@ -47,7 +47,7 @@ questions.forEach((question, i) => {
     ${question.fields
       .map(
         (field, idx) =>
-          `<input class="p-5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" type="number" name="${field.id}" id="${field.id}" min="${field.options.min}" max="${field.options.max}" step="${field.options.step}"/>`
+          `<input class="p-5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" type="number" name="${field.id}" id="${field.id}" min="${field.options.min}" max="${field.options.max}" step="${field.options.step}" placeholder="${field.options?.placeholder || ''}"/>`
       )
     .join("")}
     </div>`
