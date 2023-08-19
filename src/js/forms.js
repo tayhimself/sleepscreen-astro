@@ -111,7 +111,6 @@ export const listeners = function (form, questions) {
       submitButton.classList.add("hidden")
     } else if (currentStep === tabTargets.length) {
       nextButton.classList.add("hidden")
-      //validateEntry()
       showResults()
     } else {
       // In all other instances, display both next and previous buttons
@@ -216,6 +215,7 @@ export const listeners = function (form, questions) {
     return skip
   }
 
+  // TODO remove this function
   function saveFormDataToCookie() {
     let formData = new FormData(form)
     const formDataObj = Object.fromEntries(formData.entries())
@@ -232,7 +232,7 @@ export const listeners = function (form, questions) {
       screenStoreData.screenStore[form.id]["completed"] = true
       sessionStorage.setItem("screenStore", JSON.stringify(screenStoreData))
     } else {
-      // TODO make a restart function to redirect to the start of the form
+      // TODO make a restart function to redirect to the start of the form since we don't have any data
     }
   }
 
@@ -241,34 +241,36 @@ export const listeners = function (form, questions) {
    * @returns the next screen to display
    * NULL if there are no more screens to display
    */
-  function getNextScreen() {
+  async function getNextScreen() {
     let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
     if (screenStoreData) {
-      screenStoreData = screenStoreData.screenStore
-      let nextScreen = Object.keys(screenStoreData).find((key) => screenStoreData[key]["completed"] === false)
+      let data = await sendFormDataToAPI(new FormData(form))
+      screenStoreData.screenStore[form.id]["completed"] = true
+      screenStoreData.screenStore[form.id]["result"] = data[form.id]
+      // write the data to session storage
+      // TODO move this to a new function above or merge with saveFormDataToSessionStorage function
+      sessionStorage.setItem("screenStore", JSON.stringify(screenStoreData))
+      let nextScreen = Object.keys(screenStoreData.screenStore).find((key) => screenStoreData.screenStore[key]["completed"] === false)
       if (nextScreen) {
-        return screenStoreData[nextScreen]["route"]
+        return screenStoreData.screenStore[nextScreen]["route"]
       }
     } else {
-      // TODO make a restart function to redirect to the start of the form
+      // TODO make a restart function to redirect to the start of the form - see above todo
     }
   }
 
-  function showResults() {
+  async function showResults() {
     // Hide the form
     form.classList.add("hidden")
     document.querySelector("div.pagination").classList.add("hidden")
     // Calculate the score
-    let score = saveFormDataToCookie()
-    score = saveFormDataToSessionStorage()
-    let next = getNextScreen()
+    saveFormDataToSessionStorage()
+    let next = await getNextScreen()
     if (next) {
       window.location.href = next
     } else {
       window.location.href = "./results"
     }
-    // send to api
-    // sendFormDataToAPI(new FormData(form))
   }
 
   async function sendFormDataToAPI(formData) {
@@ -288,7 +290,7 @@ export const listeners = function (form, questions) {
         const data = await response.json()
         if (response.ok && response.status >= 200 && response.status < 300) {
           success = true
-          //TODO - set the sessionStorage to console.log("Success:", data)
+          return await data
         } else {
           setTimeout(() => {
             console.log("retrying...")
@@ -303,5 +305,6 @@ export const listeners = function (form, questions) {
         retry += 1
       }
     }
+    return null
   }
 }

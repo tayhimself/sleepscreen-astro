@@ -5,6 +5,7 @@ let data = {}
 for (const path in file) {
   data = await file[path]()
 }
+let form = document.createElement("form")
 form.id="ess"
 document.getElementById("main").appendChild(form)
 let questions = Array.from(data.questions)
