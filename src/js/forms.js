@@ -41,13 +41,14 @@ export const listeners = function (form, questions) {
           previousButton.setAttribute("disabled", "disabled")
           submitButton.setAttribute("disabled", "disabled")
           // Make the input border red
-          e.target.classList.add('text-red-500', 'border-red-500'); // Add Tailwind CSS classes for error styling
+          e.target.classList.add("text-red-500", "border-red-500") // Add Tailwind CSS classes for error styling
         } else {
           // enable the next, previous, or continue buttons
           nextButton.removeAttribute("disabled")
           previousButton.removeAttribute("disabled")
           submitButton.removeAttribute("disabled")
-          e.target.classList.remove('text-red-500', 'border-red-500'); // Add Tailwind CSS classes for error styling
+          e.target.classList.remove("text-red-500", "border-red-500") // Add Tailwind CSS classes for error styling
+          e.target.classList.add("border-gray-300 focus:ring-green-500")
         }
       }),
       200
@@ -267,9 +268,9 @@ export const listeners = function (form, questions) {
     saveFormDataToSessionStorage()
     let next = await getNextScreen()
     if (next) {
-      window.location.href = next
+      window.location.href = "../" + next
     } else {
-      window.location.href = "./results"
+      window.location.href = "../results"
     }
   }
 
@@ -280,7 +281,8 @@ export const listeners = function (form, questions) {
     let retry = 0
     while (!success && retry < 4) {
       try {
-        const response = await fetch("http://localhost:8000/" + form.id, {
+        const response = await fetch("https://sleephealth.partners.org/rr/" + form.id + "/", {
+        //const response = await fetch("http://localhost:8000/" + form.id + "/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
