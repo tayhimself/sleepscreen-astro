@@ -10,13 +10,8 @@ import Notice from "../components/Notice.astro"
 
     <section class="max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch">
       <div id="main" class="m-8">
-        <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center">
-          Select the sleep disorders you wish to screen
-        </h3>
-        <p class="my-2 text-lg">
-          We suggest that you select all sleep disorders for screening. If you are not sure, leave the sleep disorders
-          selected as they will take less than a minute each on average.
-        </p>
+        <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center">Select the sleep disorders you wish to screen</h3>
+        <p class="my-2 text-lg">We suggest that you select all sleep disorders for screening. If you are not sure, leave the sleep disorders selected as they will take less than a minute each on average.</p>
         <div class="mt-8 mb-4 flex flex-col place-content-center mx-auto">
           <div class="flex flex-col place-content-center mx-auto">
             <div class="form-control w-72">
@@ -83,7 +78,7 @@ import Notice from "../components/Notice.astro"
       alert("Please select at least one sleep disorder to screen.")
     } else {
       //forward to the page that matches the first selected sleep disorder
-      window.location.href = Object.entries(screenStore)[0][1].route
+      window.location.href = "../" + Object.entries(screenStore)[0][1].route
     }
   })
 </script>

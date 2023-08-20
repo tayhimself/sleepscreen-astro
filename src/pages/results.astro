@@ -4,17 +4,17 @@ import Layout from "../layouts/Layout.astro"
 
 <Layout>
   <main>
-    <section class="py-4">
-      <h1 class="text-4xl font-bold text-center">Sleep Screen Results</h1>
-    </section>
     <section class="max-w-2xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch min-h-screen">
       <div class="hero min-h-[80%] bg-base-200">
         <div class="hero-content flex-col leading-relaxed">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.75 1a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5ZM1 4.75A.75.75 0 0 1 1.75 4H7a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 4.75Zm9 7.75a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5Zm0 1.5c.834 0 1.607-.255 2.248-.691l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 1 0 10 14ZM1.75 7a.75.75 0 0 0 0 1.5H4A.75.75 0 0 0 4 7H1.75Z" clip-rule="evenodd"></path></svg>
-          <div>
+          <div class="flex items-center space-x-4">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.75 1a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5ZM1 4.75A.75.75 0 0 1 1.75 4H7a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 4.75Zm9 7.75a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5Zm0 1.5c.834 0 1.607-.255 2.248-.691l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 1 0 10 14ZM1.75 7a.75.75 0 0 0 0 1.5H4A.75.75 0 0 0 4 7H1.75Z" clip-rule="evenodd"></path></svg>
             <h1 class="text-3xl font-bold">Sleep Screen Results</h1>
+          </div>
+
+          <div>
             <p class="my-2 low-risk text-xl">Based on the answers you provided, there was not enough evidence to indicate that you are at high risk of having any of the sleep disorders screened for in the questionnaire.</p>
-            <p class="my-2 low-risk unknown-risk text-xl">Based on the answers that you provided, we were unable to determine your risk of common sleep because of missing information.</p>
             <p class="my-2 high-risk text-xl">Based on the answers you provided, you may be at high risk of having one or more of the following sleep disorders:</p>
             <div class="my-2 p-2 osa rounded-md mix-blend-darken bg-yellow-100 hidden">
               <h3 class="text-xl font-bold">Obstructive Sleep Apnea</h3>
