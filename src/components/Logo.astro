@@ -1,18 +1,24 @@
 ---
-import {Icon} from 'astro-icon';
-import {SITE} from '~/config.mjs'
+import { Icon } from "astro-icon"
+import { SITE } from "~/config.mjs"
 ---
 
-<span class="self-center ml-2 text-2xl font-extrabold whitespace-nowrap ">
-  <Icon name="mgb" class="w-8 h-12 inline-block"/>
-	<span class="px-2 text-capitalize text-base-300">
+<span class="self-center ml-2 text-2xl font-extrabold whitespace-nowrap">
+
+  <a href="https://www.brighamandwomens.org/medicine/sleep-and-circadian-disorders/overview" target="_blank" rel="noopener noreferrer">
+    <Icon name="mgb" class="w-8 h-12 inline-block" />
+  </a>
+  <a href="https://sleep.hms.harvard.edu" target="_blank" rel="noopener noreferrer">
+    <Icon name="harvard" class="w-12 h-12 inline-block" />
+  </a>
+  <span class="px-2 text-capitalize text-base-300 font-semibold">
     {SITE.name}
   </span>
 </span>
 
 <style>
-  [astro-icon] {
+  [astro-icon="mgb"] {
     vertical-align: middle;
-    fill: #009CA6
-    }
+    fill: #009ca6;
+  }
 </style>

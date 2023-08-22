@@ -1,5 +1,5 @@
 export const SITE = {
-	name: 'MGB Sleep Disorder Screening for Railroaders',
+	name: 'Anonymous Sleep Disorder Screening for Railroaders',
 	origin: 'https://sleepscreen.netlify.app',
 	basePathname: '/',
   trailingSlash: false,
