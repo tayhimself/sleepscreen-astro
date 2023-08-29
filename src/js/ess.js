@@ -22,7 +22,7 @@ questions.forEach((question, i) => {
   <p class="alert shadow-lg italic hover:not-italic mx-auto">
     The following questions refer to your usual way of life in recent times. Even if you have not done some of these activities recently, try to work out how they would have affected you and choose the column which most appropriately describes your chance of dozing.
   </p>
-  <progress class="progress progress-primary w-full my-8" value=${i} max="8"></progress>
+  <progress class="progress progress-primary w-full -mt-4 mb-4" value=${i} max=${questions.length}></progress>
   <label class="text-semibold text-xl text-left min-w-full">
   <p class="mb-2">How likely are you to doze off or fall asleep, in contrast to just feeling tired?</p>
   <p class="flex items-center">

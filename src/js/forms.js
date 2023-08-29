@@ -48,7 +48,7 @@ export const listeners = function (form, questions) {
           previousButton.removeAttribute("disabled")
           submitButton.removeAttribute("disabled")
           e.target.classList.remove("text-red-500", "border-red-500") // Add Tailwind CSS classes for error styling
-          e.target.classList.add("border-gray-300 focus:ring-green-500")
+          e.target.classList.add("border-gray-300", "focus:ring-green-500")
         }
       }),
       200
