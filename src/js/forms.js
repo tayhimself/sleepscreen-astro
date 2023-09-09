@@ -55,7 +55,7 @@ export const listeners = function (form, questions) {
     )
   })
 
-  // Add an event listener to the input elements that goes to the next page after 1 second when the user selects an answer
+  // Add an event listener to the input elements that goes to the next page after period when the user selects an answer
 
   let inputs = document.querySelectorAll("input[type='radio']")
   inputs.forEach((input) => {
@@ -70,8 +70,7 @@ export const listeners = function (form, questions) {
       setTimeout(() => {
         nextButton.click()
         spinner.classList.add("hidden")
-        updateStatusDisplay()
-      }, 1000)
+      }, 750)
     })
   })
 
@@ -104,6 +103,8 @@ export const listeners = function (form, questions) {
     updateStatusDisplay("previous")
   })
 
+  document.querySelector("div.pagination").classList.remove("hidden")
+
   function updateStatusDisplay(button = "") {
     if (currentStep == 0) {
       // If it's the first step, hide the previous button
@@ -112,15 +113,12 @@ export const listeners = function (form, questions) {
       submitButton.classList.add("hidden")
     } else if (currentStep === tabTargets.length) {
       nextButton.classList.add("hidden")
-      showResults()
+      gotoNextModule()
     } else {
       // In all other instances, display both next and previous buttons
       // check if we are dependent on any previous answers using data attributes (dataset)
       do {
         if (skipQuestion()) {
-          nextButton.classList.remove("hidden")
-          previousButton.classList.remove("hidden")
-          submitButton.classList.add("hidden")
           // Hide current tab
           tabPanels[currentStep].classList.add("hidden")
           tabTargets[currentStep].classList.remove("active")
@@ -131,7 +129,7 @@ export const listeners = function (form, questions) {
               tabTargets[currentStep + 1].classList.add("active")
               currentStep += 1
             } else {
-              showResults()
+              gotoNextModule()
               break
             }
           } else if (button === "previous") {
@@ -146,7 +144,6 @@ export const listeners = function (form, questions) {
 
       previousButton.classList.remove("hidden")
       if (currentStep === tabTargets.length - 1) {
-        // If it's the last step, hide the next button and show submit
         nextButton.classList.add("hidden")
         submitButton.classList.remove("hidden")
       } else {
@@ -216,21 +213,13 @@ export const listeners = function (form, questions) {
     return skip
   }
 
-  // TODO remove this function
-  function saveFormDataToCookie() {
-    let formData = new FormData(form)
-    const formDataObj = Object.fromEntries(formData.entries())
-    const formDataJson = JSON.stringify(formDataObj)
-    document.cookie = `formData=${encodeURIComponent(formDataJson)}`
-  }
-
-  function saveFormDataToSessionStorage() {
+  async function saveFormDataToSessionStorage() {
     let formData = new FormData(form)
     const formDataObj = Object.fromEntries(formData.entries())
     let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
     if (screenStoreData) {
       screenStoreData.screenStore[form.id]["values"] = formDataObj
-      screenStoreData.screenStore[form.id]["completed"] = true
+      screenStoreData.screenStore[form.id]["scored"] = true
       sessionStorage.setItem("screenStore", JSON.stringify(screenStoreData))
     } else {
       // TODO make a restart function to redirect to the start of the form since we don't have any data
@@ -255,16 +244,17 @@ export const listeners = function (form, questions) {
       if (nextScreen) {
         return screenStoreData.screenStore[nextScreen]["route"]
       }
+      // a null return here means we are done with the screens and show the results
+      return null
     } else {
       // TODO make a restart function to redirect to the start of the form - see above todo
     }
   }
 
-  async function showResults() {
-    // Hide the form
+  async function gotoNextModule() {
+    // Hide the form and pagination controls
     form.classList.add("hidden")
     document.querySelector("div.pagination").classList.add("hidden")
-    // Calculate the score
     saveFormDataToSessionStorage()
     let next = await getNextScreen()
     if (next) {
