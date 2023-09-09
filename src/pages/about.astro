@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro"
+import Profile from "../components/Profile.astro"
+import { Content as ScreeningToolContent } from "../data/screening-tool.md"
+const profiles = await Astro.glob("../data/profiles/*.md")
+profiles.sort((a, b) => {
+  return a.frontmatter.sort_rank - b.frontmatter.sort_rank
+})
+---
+
+<Layout>
+  <main class="bg-base-200">
+    <Title title="About the screening tool" />
+    <section class="max-w-xl md:max-w-3xl mx-auto grid grid-cols-1 place-items-stretch m-8">
+      <ScreeningToolContent />
+    </section>
+    <hr/>
+    <section class="max-w-xl md:max-w-3xl mx-auto grid grid-cols-1 place-items-stretch">
+      <h3 class="-my-4 mb-8 font-semibold text-xl mx-auto text-center"></h3>
+      <p class="my-2 text-lg">The Division of Sleep and Circadian Disorders, Brigham and Women's Hospital is a group of experts devoted to studying work hours, safety, health and well-being of those who work in safety-sensitive occupations. We have studied first responders, including police officers, firefighters and federal air marshals, maritime bar pilots, resident physicians and other health care workers, officer workers and astronauts.</p>
+      {
+        profiles.map((profile) => {
+          return <Profile data={profile} />
+        })
+      }
+    </section>
+  </main>
+</Layout>
