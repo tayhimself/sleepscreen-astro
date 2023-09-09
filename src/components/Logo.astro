@@ -4,7 +4,6 @@ import { SITE } from "~/config.mjs"
 ---
 
 <span class="self-center ml-2 text-2xl font-extrabold whitespace-nowrap">
-
   <a href="https://www.brighamandwomens.org/medicine/sleep-and-circadian-disorders/overview" target="_blank" rel="noopener noreferrer">
     <Icon name="mgb" class="w-8 h-12 inline-block" />
   </a>
@@ -12,7 +11,7 @@ import { SITE } from "~/config.mjs"
     <Icon name="harvard" class="w-12 h-12 inline-block" />
   </a>
   <span class="px-2 text-capitalize text-base-300 font-semibold">
-    {SITE.name}
+    <a href="" id="restart" data-home={SITE.origin}> {SITE.name}</a>
   </span>
 </span>
 
@@ -22,3 +21,4 @@ import { SITE } from "~/config.mjs"
     fill: #009ca6;
   }
 </style>
+<script src="../js/global.js"></script>
