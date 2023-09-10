@@ -4,10 +4,10 @@ import Notice from "../components/Notice.astro"
 ---
 
 <Layout>
-  <main>
+  <main class="bg-base-200">
     <section class="max-w-2xl md:max-w-4xl mx-auto grid grid-cols-1 place-items-stretch min-h-screen">
-      <div class="hero min-h-[80%] bg-base-200">
-        <div class="hero-content flex-col leading-relaxed">
+      <div class="hero">
+        <div class="hero-content flex-col leading-relaxed hidden" id="save-content">
           <div class="flex items-center space-x-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.75 1a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5ZM1 4.75A.75.75 0 0 1 1.75 4H7a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 4.75Zm9 7.75a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5Zm0 1.5c.834 0 1.607-.255 2.248-.691l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 1 0 10 14ZM1.75 7a.75.75 0 0 0 0 1.5H4A.75.75 0 0 0 4 7H1.75Z" clip-rule="evenodd"></path></svg>
             <h1 class="text-3xl font-bold">Sleep Screen Results</h1>
@@ -49,57 +49,82 @@ import Notice from "../components/Notice.astro"
             </p>
             <p class="my-4 low-risk">
               <div class="flex flex-col w-full md:flex-row">
-                <div class="flex-1 bg-base-300 rounded-box justify-center items-center p-2">
+                <div class="flex-1 bg-base-300 rounded-box justify-center items-center p-2 shadow-xl">
                   <div class="h-full flex flex-col justify-center items-center text-center">
                     Back to the <a href="https://railroadersleep.fra.dot.gov" class="link link-primary">Railroaders' Guide to Healthy Sleep</a>
                   </div>
                 </div>
                 <div class="divider md:divider-horizontal"></div>
-                <div class="flex-1 bg-base-300 rounded-box place-items-center p-2">
+                <div class="flex-1 bg-base-300 rounded-box place-items-center p-2 shadow-xl">
                   <div class="h-full flex flex-col justify-center items-center text-center">
                     More information about sleep disorders can be found at the <a href="https://sleepeducation.org/sleep-disorders/" target="_blank" class="link link-primary">American Academy of Sleep Medicine</a>
                   </div>
                 </div>
               </div>
-
             </p>
           </div>
         </div>
       </div>
 
-      <hr />
+      <!-- Save and Print Buttons -->
+      <div id="save" class="print:hidden mx-auto high-risk">
+        <div class="grid md:grid-cols-2 justify-around">
+          <button class="m-2 btn btn-accent flex-0 w-64" id="screenshot">Save Results <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10 21.4v-7.006a.6.6 0 0 1 .6-.6h1.173a.6.6 0 0 0 .504-.275l1.446-2.244a.6.6 0 0 1 .504-.275h3.546a.6.6 0 0 1 .504.275l1.446 2.244a.6.6 0 0 0 .504.275H21.4a.6.6 0 0 1 .6.6V21.4a.6.6 0 0 1-.6.6H10.6a.6.6 0 0 1-.6-.6Z"></path><path d="M16 19a2 2 0 1 0 0-4a2 2 0 0 0 0 4ZM3 18v3h2.5M3 9.5v5M3 6V3h3m3.5 0h5M18 3h3v2.5m0 4.5V8.5"></path></g></svg></button>
+          <button class="m-2 btn btn-accent flex-0 w-64" id="print-button">Print <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path fill="currentColor" d="M420 128.1V16H92v112.1A80.1 80.1 0 0 0 16 208v192h68v-32H48V208a48.054 48.054 0 0 1 48-48h320a48.054 48.054 0 0 1 48 48v160h-44v32h76V208a80.1 80.1 0 0 0-76-79.9Zm-32-.1H124V48h264Z"></path><path fill="currentColor" d="M396 200h32v32h-32zm-280 64H76v32h40v200h272V296h40v-32H116Zm240 200H148V296h208Z"></path></svg></button>
+        </div>
+        <!-- Screenshot Modal -->
+        <dialog id="screenshot-modal" class="modal">
+          <div class="modal-box w-11/12 max-w-5xl">
+            <div class="modal-header">
+              <h3 class="text-2xl font-bold">Save Results</h3>
+            <div id="screenshot-result">
+            </div>
+            <div class="modal-action">
+              <button class="btn btn-primary" id="download-screenshot">Download</button>
+              <form method="dialog">
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+
+      </div>
       <Notice />
 
     </section>
   </main>
-</Layout>
 
-<script>
-  // load the sessionStorage data to see if high-risk classes should be hidden
-  let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
-  let lowrisk = true
-  if (screenStoreData) {
-    Object.entries(screenStoreData.screenStore).forEach(([key, value]) => {
-      if (value.result == "Y") {
-        lowrisk = false
-        document.querySelectorAll(`.${key}`).forEach((el) => {
-          el.classList.remove("hidden")
-        })
-        document.querySelectorAll(".high-risk").forEach((el) => {
-          el.classList.remove("hidden")
-        })
-        document.querySelectorAll(".low-risk").forEach((el) => {
-          el.classList.add("hidden")
-        })
-      }
-    })
-  }
-  if (lowrisk) {
-    document.querySelectorAll(".high-risk").forEach((el) => {
-      el.classList.add("hidden")
-    })
-    document.querySelectorAll(".low-risk").forEach((el) => {
-      el.classList.remove("hidden")
-    })
-  }
-</script>
+  <script>
+    // load the sessionStorage data to see if high-risk classes should be hidden
+    let screenStoreData = JSON.parse(sessionStorage.getItem("screenStore"))
+    let lowrisk = true
+    if (screenStoreData) {
+      Object.entries(screenStoreData.screenStore).forEach(([key, value]) => {
+        if (value.result == "Y") {
+          lowrisk = false
+          document.querySelectorAll(`.${key}`).forEach((el) => {
+            el.classList.remove("hidden")
+          })
+          document.querySelectorAll(".high-risk").forEach((el) => {
+            el.classList.remove("hidden")
+          })
+          document.querySelectorAll(".low-risk").forEach((el) => {
+            el.classList.add("hidden")
+          })
+        }
+      })
+    }
+    if (lowrisk) {
+      document.querySelectorAll(".high-risk").forEach((el) => {
+        el.classList.add("hidden")
+      })
+      document.querySelectorAll(".low-risk").forEach((el) => {
+        el.classList.remove("hidden")
+      })
+    }
+    // only show the results once the page is loaded
+    document.querySelector("#save-content").classList.remove("hidden")
+  </script>
+  <script src="../js/screenshot.js"></script>
+  <script src="../js/print.js"></script>
+</Layout>
